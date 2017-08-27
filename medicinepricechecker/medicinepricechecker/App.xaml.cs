@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using FreshMvvm;
+using Xamarin.Forms; 
 
 namespace medicinepricechecker
 {
@@ -6,9 +7,11 @@ namespace medicinepricechecker
     {
         public App()
         {
-            InitializeComponent();
+            InitializeComponent(); 
 
-            MainPage = new medicinepricecheckerPage();
+            var page = FreshPageModelResolver.ResolvePageModel<HomePageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page);
+            MainPage = basicNavContainer;
         }
 
         protected override void OnStart()
