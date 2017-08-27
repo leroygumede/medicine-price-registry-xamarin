@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using medicinepricechecker.Helpers;
 using medicinepricechecker.Models;
@@ -22,17 +24,20 @@ namespace medicinepricechecker
         }
 
         #region Public Methods
-        public async Task<Products> GetProductsAsync()
+        public async Task<List<Products>> GetProductsAsync()
         {
             if (await _connectionHelper.IsConnected())
             {
                 //var responseUser = await _requestProvider.GetAsync<User>(string.Format("api/user/me/"), username, password);
                 //TODO: Create Factory
-                var response = new Products();
 
-                //bool isEmpty = !response.Any();
+                var response = await _requestProvider.GetAsync<List<Products>>("search-lite?q=lamictin");
 
-                if (response.ToString() != null)
+                //var response = new Products();
+
+                bool isEmpty = !response.Any();
+
+                if (!isEmpty)
                 {
                     return response;
                 }

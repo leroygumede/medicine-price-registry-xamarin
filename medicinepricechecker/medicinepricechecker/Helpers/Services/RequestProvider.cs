@@ -11,7 +11,7 @@ namespace medicinepricechecker
 
         #region Public Methods
 
-        const string Url = "mpr.code4sa.org/api/v2/dump";
+        const string Url = "https://mpr.code4sa.org/api/v2/";
         private string requestURI;
 
         #endregion 
@@ -37,12 +37,14 @@ namespace medicinepricechecker
             throw new NotImplementedException();
         }
 
-        public async Task<TResult> GetAsync<TResult>()
+        public async Task<TResult> GetAsync<TResult>(string relativeUri)
         {
-            HttpClient client = CreateHttpClient();
-            HttpResponseMessage response = await client.GetAsync(this.RequestURI);
+            requestURI = relativeUri;
 
-            await HandleResponse(response).ConfigureAwait(false);
+            HttpClient client = this.CreateHttpClient();
+            HttpResponseMessage response = await client.GetAsync(RequestURI);
+
+            await HandleResponse(response);
             string serialized = await response.Content.ReadAsStringAsync();
 
             TResult result = await Task.Run(() =>

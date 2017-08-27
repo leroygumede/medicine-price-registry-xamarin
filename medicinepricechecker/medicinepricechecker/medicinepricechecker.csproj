@@ -62,8 +62,8 @@
     <Compile Include="PageModels\DetailsPageModel.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Services\HomeServices\HomeService.cs" />
-    <Compile Include="Services\HomeServices\IHomeService.cs" />
+    <Compile Include="Services\HomeService\HomeService.cs" />
+    <Compile Include="Services\HomeService\IHomeService.cs" />
     <Compile Include="Helpers\Services\RequestProvider.cs" />
     <Compile Include="Helpers\Services\IRequestProvider.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />
@@ -125,7 +125,7 @@
     <Folder Include="Pages\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
-    <Folder Include="Services\HomeServices\" />
+    <Folder Include="Services\HomeService\" />
     <Folder Include="Helpers\" />
     <Folder Include="Helpers\Services\" />
   </ItemGroup>

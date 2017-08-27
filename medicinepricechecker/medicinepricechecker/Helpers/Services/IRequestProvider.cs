@@ -7,7 +7,7 @@ namespace medicinepricechecker
     {
         string RequestURI { set; }
 
-        Task<TResult> GetAsync<TResult>(); 
+        Task<TResult> GetAsync<TResult>(string relativeUri); 
 
         Task<TResult> PutAsync<TResult>(int id, TResult data); 
 
