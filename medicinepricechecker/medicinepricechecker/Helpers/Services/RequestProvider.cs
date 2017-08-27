@@ -28,8 +28,6 @@ namespace medicinepricechecker
             }
         }
 
-
-
         #region interfaces
 
         public Task<TResult> DeleteAsync<TResult>(string relativeUri, int id)

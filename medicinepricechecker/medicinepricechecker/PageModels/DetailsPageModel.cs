@@ -19,7 +19,6 @@ namespace medicinepricechecker
             _detailService = detailService;
         }
 
-
         public async override void Init(object initData)
         {
             if (initData != null)

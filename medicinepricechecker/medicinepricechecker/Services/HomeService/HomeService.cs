@@ -27,10 +27,7 @@ namespace medicinepricechecker
         {
             if (await _connectionHelper.IsConnected())
             {
-                //var responseUser = await _requestProvider.GetAsync<User>(string.Format("api/user/me/"), username, password);
-                //TODO: Create Factory
-
-                var response = await _requestProvider.GetAsync<List<Product>>("search-lite?q=lamictin"); 
+                var response = await _requestProvider.GetAsync<List<Product>>("search-lite?q=lamictin");
                 bool isEmpty = !response.Any();
 
                 if (!isEmpty)

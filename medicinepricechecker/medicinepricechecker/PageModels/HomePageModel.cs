@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using FreshMvvm;
 using medicinepricechecker.Helpers;
 using medicinepricechecker.Models;
-using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace medicinepricechecker
