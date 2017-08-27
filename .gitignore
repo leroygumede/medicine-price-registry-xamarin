@@ -14,7 +14,6 @@
 .vs
 github
 github.pub
-Tangent-ExpenseApp-Xamarin.userprefs
 
 # ignore Xamarin.Android Resource.Designer.cs files
 **/*.Droid/**/[Rr]esource.[Dd]esigner.cs
@@ -226,4 +225,3 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
-.droidres/.tangent-expenseapp-xamarin.droidres.db
