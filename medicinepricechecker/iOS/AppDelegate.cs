@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using FormsToolkit.iOS;
 using Foundation;
 using UIKit;
 
@@ -13,10 +13,10 @@ namespace medicinepricechecker.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-
+            Toolkit.Init();
             // Code for starting up the Xamarin Test Cloud Agent
 #if DEBUG
-			Xamarin.Calabash.Start();
+            Xamarin.Calabash.Start();
 #endif
 
             LoadApplication(new App());
