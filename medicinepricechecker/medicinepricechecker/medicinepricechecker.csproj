@@ -60,6 +60,8 @@
     </Compile>
     <Compile Include="PageModels\AboutPageModel.cs" />
     <Compile Include="PageModels\DetailsPageModel.cs" />
+    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\Ingredient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
