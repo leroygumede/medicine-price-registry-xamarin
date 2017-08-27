@@ -7,7 +7,7 @@ using medicinepricechecker.Models;
 
 namespace medicinepricechecker
 {
-    public class HomeService : IHomeService
+    public class DetailService : IDetailService
     {
         #region Private members 
 
@@ -16,24 +16,19 @@ namespace medicinepricechecker
 
         #endregion
 
-        public HomeService(RequestProvider requestProvider, ConnectionHelper connectionHelper)
+        public DetailService(RequestProvider requestProvider, ConnectionHelper connectionHelper)
         {
             _requestProvider = requestProvider;
             _connectionHelper = connectionHelper;
         }
 
         #region Public Methods
-        public async Task<List<Product>> GetProductsAsync()
+        public async Task<Product> GetProductAsync(string code)
         {
             if (await _connectionHelper.IsConnected())
             {
-                //var responseUser = await _requestProvider.GetAsync<User>(string.Format("api/user/me/"), username, password);
-                //TODO: Create Factory
-
-                var response = await _requestProvider.GetAsync<List<Product>>("search-lite?q=lamictin"); 
-                bool isEmpty = !response.Any();
-
-                if (!isEmpty)
+                var response = await _requestProvider.GetAsync<Product>("detail?nappi=" + code);
+                if (response.name != null)
                 {
                     return response;
                 }

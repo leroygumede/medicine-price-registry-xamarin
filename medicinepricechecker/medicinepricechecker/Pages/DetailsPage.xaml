@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="medicinepricechecker.DetailsPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="medicinepricechecker.DetailsPage" Title="{Binding ProductDetails.name}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding ProductDetails.name}" />
+            <Label Text="{Binding ProductDetails.schedule}" />
+            <Label Text="{Binding ProductDetails.cost_per_unit}" />
+            <Label Text="{Binding ProductDetails.pack_size}" />
+            <Label Text="{Binding ProductDetails.id}" />
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

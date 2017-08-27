@@ -4,6 +4,7 @@ using FreshMvvm;
 using medicinepricechecker.Helpers;
 using medicinepricechecker.Models;
 using System.Diagnostics;
+using Xamarin.Forms;
 
 namespace medicinepricechecker
 {
@@ -12,7 +13,7 @@ namespace medicinepricechecker
         #region Private members 
 
         readonly IHomeService _homeServices;
-        public ObservableCollection<Products> ProductsList { get; set; }
+        public ObservableCollection<Product> ProductsList { get; set; }
 
         #endregion
 
@@ -25,13 +26,50 @@ namespace medicinepricechecker
         {
             try
             {
-                ProductsList = new ObservableCollection<Products>(await _homeServices.GetProductsAsync());
-                Debug.WriteLine("");
+                ProductsList = new ObservableCollection<Product>(await _homeServices.GetProductsAsync());
             }
             catch (System.Exception ex)
             {
                 MessageHelper.ShowError(ex, this);
             }
         }
+
+        Product _selectedProduct;
+
+        public Product SelectedLeave
+        {
+            get
+            {
+                return _selectedProduct;
+            }
+            set
+            {
+                _selectedProduct = value;
+
+                if (_selectedProduct == null)
+                {
+                    return;
+                }
+
+                SelectedProductCommand.Execute(value);
+                _selectedProduct = null;
+            }
+        }
+
+        #region Commands
+
+        public Command SelectedProductCommand
+        {
+            get
+            {
+                return new Command<Product>(async (product) =>
+                {
+                    var page = FreshMvvm.FreshPageModelResolver.ResolvePageModel<DetailsPageModel>(product);
+                    await Application.Current.MainPage.Navigation.PushAsync(page);
+                });
+            }
+        }
+
+        #endregion
     }
 }

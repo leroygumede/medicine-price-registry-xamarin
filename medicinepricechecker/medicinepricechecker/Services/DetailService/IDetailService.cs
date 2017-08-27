@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace medicinepricechecker
 {
-    public interface IHomeService
+    public interface IDetailService
     {
-        Task<List<Product>> GetProductsAsync();
+        Task<Product> GetProductAsync(string code);
     }
 }

@@ -5,7 +5,7 @@ namespace medicinepricechecker.Models
 {
     public class Ingredient : INotifyPropertyChanged
     {
-        public double strength { get; set; }
+        public int strength { get; set; }
         public string unit { get; set; }
         public string name { get; set; }
 
