@@ -4,7 +4,6 @@
         <StackLayout>
             <Label Text="{Binding ProductDetails.name}" />
             <Label Text="{Binding ProductDetails.schedule}" />
-            <Label Text="{Binding ProductDetails.cost_per_unit}" />
             <Label Text="{Binding ProductDetails.pack_size}" />
             <Label Text="{Binding ProductDetails.id}" />
         </StackLayout>

@@ -3,71 +3,72 @@ using FreshMvvm;
 using medicinepricechecker.Helpers;
 using medicinepricechecker.Models;
 using Xamarin.Forms;
+using medicinepricechecker.Services;
 
 namespace medicinepricechecker
 {
-    public class HomePageModel : FreshBasePageModel
-    {
-        #region Private members 
+	public class HomePageModel : FreshBasePageModel
+	{
+		#region Private members 
 
-        readonly IHomeService _homeServices;
-        public ObservableCollection<Product> ProductsList { get; set; }
+		readonly IProductServices _productServices;
+		public ObservableCollection<Product> ProductsList { get; set; }
 
-        #endregion
+		#endregion
 
-        public HomePageModel(HomeService homeservices)
-        {
-            _homeServices = homeservices;
-        }
+		public HomePageModel(ProductServices productServices)
+		{
+			_productServices = productServices;
+		}
 
-        public async override void Init(object initData)
-        {
-            try
-            {
-                ProductsList = new ObservableCollection<Product>(await _homeServices.GetProductsAsync());
-            }
-            catch (System.Exception ex)
-            {
-                MessageHelper.ShowError(ex, this);
-            }
-        }
+		public async override void Init(object initData)
+		{
+			try
+			{
+				ProductsList = new ObservableCollection<Product>(await _productServices.GetProductsAsync());
+			}
+			catch (System.Exception ex)
+			{
+				MessageHelper.ShowError(ex, this);
+			}
+		}
 
-        Product _selectedProduct;
+		Product _selectedProduct;
 
-        public Product SelectedLeave
-        {
-            get
-            {
-                return _selectedProduct;
-            }
-            set
-            {
-                _selectedProduct = value;
+		public Product SelectedProduct
+		{
+			get
+			{
+				return _selectedProduct;
+			}
+			set
+			{
+				_selectedProduct = value;
 
-                if (_selectedProduct == null)
-                {
-                    return;
-                }
+				if (_selectedProduct == null)
+				{
+					return;
+				}
 
-                SelectedProductCommand.Execute(value);
-                _selectedProduct = null;
-            }
-        }
+				SelectedProductCommand.Execute(value);
+				_selectedProduct = null;
+			}
+		}
 
-        #region Commands
+		#region Commands
 
-        public Command SelectedProductCommand
-        {
-            get
-            {
-                return new Command<Product>(async (product) =>
-                {
-                    var page = FreshMvvm.FreshPageModelResolver.ResolvePageModel<DetailsPageModel>(product);
-                    await Application.Current.MainPage.Navigation.PushAsync(page);
-                });
-            }
-        }
+		public Command SelectedProductCommand
+		{
+			get
+			{
+				return new Command<Product>(async (product) =>
+				{
+					var page = FreshMvvm.FreshPageModelResolver.ResolvePageModel<DetailsPageModel>(product);
+					await Application.Current.MainPage.Navigation.PushAsync(page);
+				});
+			}
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

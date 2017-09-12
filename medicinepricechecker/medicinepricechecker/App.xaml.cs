@@ -1,6 +1,7 @@
 ﻿using FormsToolkit;
 using FreshMvvm;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace medicinepricechecker
 {
@@ -14,8 +15,8 @@ namespace medicinepricechecker
 			InitializeComponent();
 
 			PersonRepo = new Repository(dbPath);
-
-			var page = FreshPageModelResolver.ResolvePageModel<TestPageModel>();
+			Debug.WriteLine(dbPath);
+			var page = FreshPageModelResolver.ResolvePageModel<HomePageModel>();
 			var basicNavContainer = new FreshNavigationContainer(page);
 			MainPage = basicNavContainer;
 		}

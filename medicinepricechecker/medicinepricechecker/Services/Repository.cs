@@ -37,11 +37,28 @@ namespace medicinepricechecker
 
 		public Task<List<Product>> GetAllProducts()
 		{
-			// Return a list of bills saved to the Bill table in the database.
-			//return conn.Table<Product>().ToListAsync();
-			return conn.QueryAsync<Product>("select * from Product LIMIT 30");
+			return conn.QueryAsync<Product>("select * from product LIMIT 30");
+		}
+
+		public async Task<List<Product>> GetProduct(string code)
+		{
+			return await conn.QueryAsync<Product>("Select * from product where nappi_code = ?", code);
+		}
 
 
+
+		public async Task<bool> ClearDatabase()
+		{
+			try
+			{
+				await conn.DropTableAsync<Product>();
+				await conn.CreateTableAsync<Product>();
+				return true;
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
 		}
 
 		public Task<int> TableExists()
@@ -49,8 +66,6 @@ namespace medicinepricechecker
 			// Return a list of bills saved to the Bill table in the database.
 			//return conn.Table<Product>().ToListAsync();
 			return conn.ExecuteScalarAsync<int>("select count(*) from Product");
-
-
 		}
 
 	}

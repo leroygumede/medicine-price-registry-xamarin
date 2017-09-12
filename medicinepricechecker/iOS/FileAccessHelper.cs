@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using Foundation;
+
 namespace medicinepricechecker.iOS
 {
 	public class FileAccessHelper
@@ -6,14 +9,27 @@ namespace medicinepricechecker.iOS
 		public static string GetLocalFilePath(string filename)
 		{
 			string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			string libFolder = System.IO.Path.Combine(docFolder, "..", "Library", "Databases");
+			string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
 
-			if (!System.IO.Directory.Exists(libFolder))
+			if (!Directory.Exists(libFolder))
 			{
-				System.IO.Directory.CreateDirectory(libFolder);
+				Directory.CreateDirectory(libFolder);
 			}
 
-			return System.IO.Path.Combine(libFolder, filename);
+			string dbPath = Path.Combine(libFolder, filename);
+
+			CopyDatabaseIfNotExists(dbPath);
+
+			return dbPath;
+		}
+
+		private static void CopyDatabaseIfNotExists(string dbPath)
+		{
+			if (!File.Exists(dbPath))
+			{
+				var existingDb = NSBundle.MainBundle.PathForResource("products", "db3");
+				File.Copy(existingDb, dbPath);
+			}
 		}
 	}
 }

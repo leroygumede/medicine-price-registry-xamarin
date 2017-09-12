@@ -9,33 +9,47 @@ namespace medicinepricechecker.Models
 	[Table(nameof(Product))]
 	public class Product : INotifyPropertyChanged
 	{
-		[NotNull, MaxLength(250)]
-		public string name { get; set; }
 
+		[NotNull, MaxLength(250)]
+		public string id { get; set; }
+		public string regno { get; set; }
+		public string name { get; set; }
+		public string schedule { get; set; }
+		public string dosage_form { get; set; }
+		public string pack_size { get; set; }
+		public string num_packs { get; set; }
+		public string sep { get; set; }
+		public string is_generic { get; set; }
 		public string nappi_code { get; set; }
 
-		public string schedule { get; set; }
 
-		public string cost_per_unit { get; set; }
+		//[NotNull, MaxLength(250)]
+		//public string name { get; set; }
 
-		public int num_packs { get; set; }
+		//public string nappi_code { get; set; }
 
-		public string dispensing_fee { get; set; }
+		//public string schedule { get; set; }
 
-		[Ignore]
-		public IList<Ingredient> ingredients { get; set; }
+		//public string cost_per_unit { get; set; }
 
-		public double pack_size { get; set; }
+		//public int num_packs { get; set; }
 
-		public string dosage_form { get; set; }
+		//public string dispensing_fee { get; set; }
 
-		public string is_generic { get; set; }
+		//[Ignore]
+		//public IList<Ingredient> ingredients { get; set; }
 
-		public string regno { get; set; }
+		//public double pack_size { get; set; }
 
-		public int id { get; set; }
+		//public string dosage_form { get; set; }
 
-		public string sep { get; set; }
+		//public string is_generic { get; set; }
+
+		//public string regno { get; set; }
+
+		//public int id { get; set; }
+
+		//public string sep { get; set; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 	}

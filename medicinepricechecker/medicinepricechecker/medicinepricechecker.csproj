@@ -39,9 +39,6 @@
     <EmbeddedResource Include="Pages\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\TestPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -65,8 +62,6 @@
     <Compile Include="PageModels\DetailsPageModel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Services\HomeService\HomeService.cs" />
-    <Compile Include="Services\HomeService\IHomeService.cs" />
     <Compile Include="Helpers\Services\RequestProvider.cs" />
     <Compile Include="Helpers\Services\IRequestProvider.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />
@@ -74,13 +69,9 @@
     <Compile Include="Helpers\NoInternetConnectionException.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
-    <Compile Include="Services\DetailService\DetailService.cs" />
-    <Compile Include="Services\DetailService\IDetailService.cs" />
     <Compile Include="Services\Repository.cs" />
-    <Compile Include="Pages\TestPage.xaml.cs">
-      <DependentUpon>TestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PageModels\TestPageModel.cs" />
+    <Compile Include="Services\ProductServices.cs" />
+    <Compile Include="Services\IProductServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -147,10 +138,8 @@
     <Folder Include="Pages\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
-    <Folder Include="Services\HomeService\" />
     <Folder Include="Helpers\" />
     <Folder Include="Helpers\Services\" />
-    <Folder Include="Services\DetailService\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
