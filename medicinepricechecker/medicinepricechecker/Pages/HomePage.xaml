@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-x:Class="medicinepricechecker.HomePage" 
-BackgroundColor="White"
-Title="Products">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="medicinepricechecker.HomePage" BackgroundColor="White" Title="Medicine Price Registry">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Icon="gear" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding ProductsList}" SelectedItem="{Binding SelectedProduct,Mode=TwoWay}">
+        <ListView ItemsSource="{Binding ProductsList}" SelectedItem="{Binding SelectedProduct,Mode=TwoWay}" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding name}" />
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="LA" />
+                            <StackLayout>
+                                <Label Text="{Binding name}" TextColor="{StaticResource ColorBlack}" />
+                                <Label Text="{Binding dosage_form}" TextColor="{StaticResource ColorGrey}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding sep, StringFormat='R{0}'}" TextColor="{StaticResource ColorGreyLight}" />
+                                <Label Text="{Binding num_packs, StringFormat='pack size: {0}'}" TextColor="{StaticResource ColorGreyLight}" />
+                            </StackLayout>
+                            <!-- Code chere -->
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
