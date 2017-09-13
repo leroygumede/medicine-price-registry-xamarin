@@ -7,4 +7,4 @@ Coming Soon
 
 #### Android
 
-<img src="https://github.com/leroygumede/medicine-price-registry-xamarin/tree/master/screenshots/android(details).png" width="200">
+<img src="medicine-price-registry-xamarin/screenshots/android(home).png" width="200">
